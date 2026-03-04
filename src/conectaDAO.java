@@ -33,4 +33,14 @@ public class conectaDAO {
         return conn;
     }
     
-}
+    public void desconectar(Connection conn) {
+            try {
+                if (conn != null && !conn.isClosed()) {
+                    conn.close();
+                    System.out.println("Desconectado do banco de dados.");
+                }
+            } catch (SQLException ex) {
+                System.out.println("Erro ao desconectar: " + ex.getMessage());
+            }
+        }
+    }
