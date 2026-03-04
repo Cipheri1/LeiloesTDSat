@@ -38,13 +38,14 @@ public class ProdutosDAO {
             st.executeUpdate();
             
             System.out.println("Cadastro realizado com sucesso!");
+            
+          
         } catch (SQLException ex) {
         
             System.out.println("Erro ao cadastrar produto" + ex.getMessage());
         }
-        //conn = new conectaDAO().connectDB();
         
-        
+       conectar.desconectar(conn);        
     }
     
     public ArrayList<ProdutosDTO> listarProdutos(){
