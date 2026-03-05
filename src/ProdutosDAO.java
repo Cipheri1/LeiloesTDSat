@@ -70,6 +70,20 @@ public class ProdutosDAO {
             System.out.println("Erro ao listar: " + e.getMessage());
             }
         return listagem;
-    }        
+    }
+    public void venderProduto (int id){
+        conn = new conectaDAO().conectar();
+        try {
+            st = conn.prepareStatement(
+                    "UPDATE produtos SET status = 'Vendido' WHERE id = ?"
+                    );
+            st.setInt(1, id);
+            st.executeUpdate();
+        
+        } catch (SQLException ex) {
+            System.out.println("Erro ao vender: " + ex.getMessage());
+        }
+        new conectaDAO().desconectar(conn);
+    }
 }
 
