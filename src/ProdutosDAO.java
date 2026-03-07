@@ -91,7 +91,7 @@ public class ProdutosDAO {
             conn = new conectaDAO().conectar();
             
             try{
-                st = conn.prepareStatement("SELECT * FROM produtos WHERE status = Vendido");
+                st = conn.prepareStatement("SELECT * FROM produtos WHERE status = 'Vendido'");
                 rs = st.executeQuery();
                 
                 while (rs.next()) {
@@ -101,7 +101,7 @@ public class ProdutosDAO {
                     i.setValor(rs.getInt("valor"));
                     i.setStatus(rs.getString("status"));
                 
-                listagem.add(i);
+                vendidos.add(i);
                 }
                 } catch (SQLException e) {
             System.out.println("Erro ao listar: " + e.getMessage());

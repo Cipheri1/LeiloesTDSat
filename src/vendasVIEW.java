@@ -20,6 +20,7 @@ public class vendasVIEW extends javax.swing.JFrame {
      */
     public vendasVIEW() {
         initComponents();
+        listarProdutosVendidos();
     }
 
     /**
@@ -280,24 +281,24 @@ public class vendasVIEW extends javax.swing.JFrame {
     private javax.swing.JTable listaProdutos1;
     private javax.swing.JTable listaProdutosVendidos;
     // End of variables declaration//GEN-END:variables
-private void listarProdutosVendidos(){
-        try {
-            ProdutosDAO produtosdao = new ProdutosDAO();
-            
-            DefaultTableModel model = (DefaultTableModel) listaProdutosVendidos.getModel();
-            model.setNumRows(0);
-            
-            ArrayList<ProdutosDTO> vendidos = produtosdao.listarProdutosVendidos();
-            
-            for(int i = 0; i < vendidos.size(); i++){
-                model.addRow(new Object[]{
-                    vendidos.get(i).getId(),
-                    vendidos.get(i).getNome(),
-                    vendidos.get(i).getValor(),
-                    vendidos.get(i).getStatus()
-                });
+    private void listarProdutosVendidos(){
+            try {
+                ProdutosDAO produtosdao = new ProdutosDAO();
+
+                DefaultTableModel model = (DefaultTableModel) listaProdutosVendidos.getModel();
+                model.setNumRows(0);
+
+                ArrayList<ProdutosDTO> vendidos = produtosdao.listarProdutosVendidos();
+
+                for(int i = 0; i < vendidos.size(); i++){
+                    model.addRow(new Object[]{
+                        vendidos.get(i).getId(),
+                        vendidos.get(i).getNome(),
+                        vendidos.get(i).getValor(),
+                        vendidos.get(i).getStatus()
+                    });
+                }
+            } catch (Exception e) {
             }
-        } catch (Exception e) {
         }
-    }
 }

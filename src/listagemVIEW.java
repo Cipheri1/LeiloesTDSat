@@ -19,6 +19,7 @@ public class listagemVIEW extends javax.swing.JFrame {
      */
     public listagemVIEW() {
         initComponents();
+        listarProdutos();
     }
 
     /**
@@ -223,7 +224,6 @@ public class listagemVIEW extends javax.swing.JFrame {
                 });
             }
         } catch (Exception e) {
-        }
-    
+        }   
     }
 }
